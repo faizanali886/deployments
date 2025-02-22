@@ -25,7 +25,7 @@ echo "SSH private key set up at $SSH_KEY_PATH"
 
 # Create the SSH command for deployment
 # Use absolute path for writing the file in the home directory of ec2-user
-SSH_COMMAND="ssh -o StrictHostKeyChecking=no -i $SSH_KEY_PATH $USER_NAME@$SSH_HOST 'echo \"hello i am test file from deploy.sh of your second account\" > /home/$USER_NAME/test_file.txt'"
+SSH_COMMAND="ssh -o StrictHostKeyChecking=no -i $SSH_KEY_PATH $USER_NAME@$SSH_HOST 'echo \"hello i am test file from deploy.sh of your second account\" >> /home/$USER_NAME/test_file.txt'"
 
 # Execute the SSH command to deploy
 echo "Running deployment on EC2 instance..."
