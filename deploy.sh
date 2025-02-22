@@ -22,9 +22,9 @@ chmod 600 $SSH_KEY_PATH
 # Verify SSH private key and file permissions
 echo "SSH private key set up at $SSH_KEY_PATH"
 
-# Use $(whoami) to determine the correct user directory on the EC2 instance
-SSH_COMMAND="ssh -o StrictHostKeyChecking=no -i $SSH_KEY_PATH ec2-user@$SSH_HOST \
-  'mkdir -p /home/$(whoami) && echo \"hello i am test file from deploy.sh of your second account\" >> /home/$(whoami)/test_file.txt'"
+# Manually set the username to 'ubuntu'
+SSH_COMMAND="ssh -o StrictHostKeyChecking=no -i $SSH_KEY_PATH ubuntu@$SSH_HOST \
+  'mkdir -p /home/ubuntu && echo \"hello i am test file from deploy.sh of your second account\" >> /home/ubuntu/test_file.txt'"
 
 # Execute the SSH command to deploy
 echo "Running deployment on EC2 instance..."
