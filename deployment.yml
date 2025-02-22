@@ -1,0 +1,23 @@
+name: Deployment Configuration
+
+on:
+  push:
+    branches:
+      - main  # This will trigger when there are updates to the `main` branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout deployment repo
+        uses: actions/checkout@v2
+
+      - name: Write the deployment shell script
+        run: |
+          echo "ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ec2-user@${{ secrets.SSH_HOST }} 'echo \"hello i am test file from deployment.yml of your second account\" > ~/test_file.txt'" > deploy.sh
+          
+      - name: Deploy to EC2
+        run: |
+          chmod +x deploy.sh
+          ./deploy.sh
