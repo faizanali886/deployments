@@ -17,7 +17,6 @@ USER_NAME=$USER_NAME
 echo "Deploying to EC2 instance with SSH_HOST=$SSH_HOST and USER_NAME=$USER_NAME"
 
 # Set up SSH private key for authentication
-echo "Setting up SSH private key..."
 echo "$SSH_PRIVATE_KEY" > $SSH_KEY_PATH
 chmod 600 $SSH_KEY_PATH
 
